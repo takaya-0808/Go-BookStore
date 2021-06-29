@@ -8,4 +8,6 @@ WORKDIR /go/src/app
 
 ADD /src /go/src/app
 
+RUN go get github.com/gin-gonic/gin
+
 CMD [ "go", "run", "main.go" ]
