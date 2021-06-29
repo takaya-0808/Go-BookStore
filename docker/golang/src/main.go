@@ -12,7 +12,9 @@ func main() {
 	r := gin.Default()
 	// app.InitRouting(r)
 	r.GET("/hello", func(c *gin.Context) {
-		c.String(http.StatusOK, "heelo world")
+		c.JSON(http.StatusOK, gin.H{
+			"message": "pong",
+		})
 	})
 	r.Run(":8018")
 }
