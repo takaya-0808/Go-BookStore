@@ -9,14 +9,14 @@ import (
 
 func main() {
 	log.Println("Start server ...................")
-	r := gin.Default()
+	router := gin.Default()
 	// app.InitRouting(r)
-	r.GET("/hello", func(c *gin.Context) {
+	router.GET("/hello", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
 	})
-	v1 := r.Group("/v1")
+	v1 := router.Group("/v1")
 	{
 		v1.GET("/get_message/:name", func(c *gin.Context) {
 			name := c.Param("name")
