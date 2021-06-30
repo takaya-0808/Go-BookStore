@@ -27,5 +27,5 @@ func main() {
 		})
 		// v1.GET("/read_message/:name", func(c *gin.Context){})
 	}
-	r.Run(":8018")
+	router.Run(":8018")
 }
