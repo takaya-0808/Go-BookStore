@@ -5,5 +5,5 @@ services:
     build: docker/golang/
     tty: true
     ports:
-      - "8008:8008"
+      - "8018:8018"
     container_name: GolangContainer
