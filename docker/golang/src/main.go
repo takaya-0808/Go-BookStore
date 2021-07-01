@@ -23,13 +23,7 @@ func main() {
 	})
 	v1 := router.Group("/v1")
 	{
-		v1.GET("/get_message/:name", func(c *gin.Context) {
-			name := c.Param("name")
-			message := "name is " + name
-			c.JSON(http.StatusOK, gin.H{
-				"name": message,
-			})
-		})
+		v1.GET("/get_message/:name", GetMessage)
 
 		v1.GET("/read_message/:name", func(c *gin.Context) {
 			var msg struct {
@@ -66,4 +60,10 @@ func main() {
 		})
 	}
 	router.Run(":8018")
+}
+
+func GetMessage(c *gin.Context) {
+	name := c.Param("name")
+	message := "name is " + name
+	c.JSON(http.StatusOK, gin.H{"name": message})
 }
