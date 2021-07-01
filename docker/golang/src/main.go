@@ -64,6 +64,7 @@ func main() {
 				c.JSON(http.StatusBadRequest, gin.H{
 					"error": "Bad Request",
 				})
+				return
 			}
 			c.JSON(http.StatusCreated, gin.H{
 				"mesaage": "ok",
