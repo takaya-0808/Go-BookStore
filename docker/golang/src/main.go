@@ -27,27 +27,11 @@ func main() {
 
 		v1.GET("/read_message/:name", ReadMessage)
 
-		v1.GET("/country/:id", func(c *gin.Context) {
-			id := c.Param("id")
-			log.Println(id)
-		})
+		v1.GET("/country/:id", PrintID)
 
-		v1.GET("/Country/:id", func(c *gin.Context) {
-			var country Country
-			id := c.Param("id")
-			country.Code = id
-			country.Name = "japan"
-			c.JSON(http.StatusOK, country)
-		})
+		v1.GET("/Country/:id", GetCountry)
 
-		v1.POST("/Country/", func(c *gin.Context) {
-			var country Country
-			if err := c.ShouldBindJSON(&country); err != nil {
-				c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
-				return
-			}
-			c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
-		})
+		v1.POST("/Country/", PostCountry)
 	}
 	router.Run(":8018")
 }
@@ -81,4 +65,13 @@ func GetCountry(c *gin.Context) {
 	country.Code = id
 	country.Name = "japan"
 	c.JSON(http.StatusOK, country)
+}
+
+func PostCountry(c *gin.Context) {
+	var country Country
+	if err := c.ShouldBindJSON(&country); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
 }
