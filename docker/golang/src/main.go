@@ -7,6 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type Country struct {
+	Code string
+	Name string
+}
+
 func main() {
 	log.Println("Start server ...................")
 	router := gin.Default()
@@ -25,6 +30,7 @@ func main() {
 				"name": message,
 			})
 		})
+
 		v1.GET("/read_message/:name", func(c *gin.Context) {
 			var msg struct {
 				Name    string `json:"user"`
@@ -35,6 +41,19 @@ func main() {
 			msg.Message = "これは構造体をJSONで返すためのテストです。"
 			msg.Number = 1111
 			c.JSON(http.StatusOK, msg)
+		})
+
+		v1.GET("/country/:id", func(c *gin.Context) {
+			id := c.Param("id")
+			log.Println(id)
+		})
+
+		v1.GET("/Country", func(c *gin.Context) {
+			var country Country
+			id := c.Query("country")
+			country.Code = id
+			country.Name = "japan"
+			c.JSON(http.StatusOK, country)
 		})
 	}
 	router.Run(":8018")
