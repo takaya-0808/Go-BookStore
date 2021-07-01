@@ -55,6 +55,20 @@ func main() {
 			country.Name = "japan"
 			c.JSON(http.StatusOK, country)
 		})
+
+		v1.POST("/Country/", func(c *gin.Context) {
+			var country Country
+			err := c.Bind(&country)
+			log.Println(err)
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{
+					"error": "Bad Request",
+				})
+			}
+			c.JSON(http.StatusCreated, gin.H{
+				"mesaage": "ok",
+			})
+		})
 	}
 	router.Run(":8018")
 }
