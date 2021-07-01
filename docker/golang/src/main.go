@@ -25,7 +25,17 @@ func main() {
 				"name": message,
 			})
 		})
-		// v1.GET("/read_message/:name", func(c *gin.Context){})
+		v1.GET("/read_message/:name", func(c *gin.Context) {
+			var msg struct {
+				Name    string `json:"user"`
+				Message string
+				Number  int
+			}
+			msg.Name = c.Param("name")
+			msg.Message = "これは構造体をJSONで返すためのテストです。"
+			msg.Number = 1111
+			c.JSON(http.StatusOK, msg)
+		})
 	}
 	router.Run(":8018")
 }
