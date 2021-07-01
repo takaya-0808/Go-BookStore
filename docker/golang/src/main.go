@@ -48,9 +48,9 @@ func main() {
 			log.Println(id)
 		})
 
-		v1.GET("/Country", func(c *gin.Context) {
+		v1.GET("/Country/:id", func(c *gin.Context) {
 			var country Country
-			id := c.Query("country")
+			id := c.Param("id")
 			country.Code = id
 			country.Name = "japan"
 			c.JSON(http.StatusOK, country)
