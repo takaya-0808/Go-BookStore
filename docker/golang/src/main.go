@@ -26,7 +26,7 @@ func main() {
 	{
 		v1.GET("/get_message/:name", controller.GetMessage)
 
-		v1.GET("/read_message/:name", ReadMessage)
+		v1.GET("/read_message/:name", controller.ReadMessage)
 
 		v1.GET("/country/:id", PrintID)
 
@@ -35,24 +35,6 @@ func main() {
 		v1.POST("/Country/", PostCountry)
 	}
 	router.Run(":8018")
-}
-
-// func GetMessage(c *gin.Context) {
-// 	name := c.Param("name")
-// 	message := "name is " + name
-// 	c.JSON(http.StatusOK, gin.H{"name": message})
-// }
-
-func ReadMessage(c *gin.Context) {
-	var msg struct {
-		Name    string `json:"user"`
-		Message string
-		Number  int
-	}
-	msg.Name = c.Param("name")
-	msg.Message = "これは構造体をJSONで返すためのテストです。"
-	msg.Number = 1111
-	c.JSON(http.StatusOK, msg)
 }
 
 func PrintID(c *gin.Context) {
