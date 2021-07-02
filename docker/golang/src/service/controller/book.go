@@ -17,6 +17,18 @@ func GetMessage(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"name": message})
 }
 
+func ReadMessage(c *gin.Context) {
+	var msg struct {
+		Name    string `json:"user"`
+		Message string
+		Number  int
+	}
+	msg.Name = c.Param("name")
+	msg.Message = "これは構造体をJSONで返すためのテストです。"
+	msg.Number = 1111
+	c.JSON(http.StatusOK, msg)
+}
+
 // type BookController struct {
 // 	controller usecase.BookUsecase
 // }
