@@ -48,6 +48,15 @@ func GetCountry(c *gin.Context) {
 	c.JSON(http.StatusOK, country)
 }
 
+func PostCountry(c *gin.Context) {
+	var country Country
+	if err := c.ShouldBindJSON(&country); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
+}
+
 // type BookController struct {
 // 	controller usecase.BookUsecase
 // }
