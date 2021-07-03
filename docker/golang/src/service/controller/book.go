@@ -6,6 +6,7 @@ import (
 	// "bookstore/usecase"
 	// "bookstore/service/mysql"
 	// "strconv"
+	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,11 @@ func ReadMessage(c *gin.Context) {
 	msg.Message = "これは構造体をJSONで返すためのテストです。"
 	msg.Number = 1111
 	c.JSON(http.StatusOK, msg)
+}
+
+func PrintID(c *gin.Context) {
+	id := c.Param("id")
+	log.Println(id)
 }
 
 // type BookController struct {
