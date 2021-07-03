@@ -28,18 +28,13 @@ func main() {
 
 		v1.GET("/read_message/:name", controller.ReadMessage)
 
-		v1.GET("/country/:id", PrintID)
+		v1.GET("/country/:id", controller.PrintID)
 
 		v1.GET("/Country/:id", GetCountry)
 
 		v1.POST("/Country/", PostCountry)
 	}
 	router.Run(":8018")
-}
-
-func PrintID(c *gin.Context) {
-	id := c.Param("id")
-	log.Println(id)
 }
 
 func GetCountry(c *gin.Context) {
