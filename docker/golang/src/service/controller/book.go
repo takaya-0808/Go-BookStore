@@ -35,6 +35,19 @@ func PrintID(c *gin.Context) {
 	log.Println(id)
 }
 
+type Country struct {
+	Code string
+	Name string
+}
+
+func GetCountry(c *gin.Context) {
+	var country Country
+	id := c.Param("id")
+	country.Code = id
+	country.Name = "japan"
+	c.JSON(http.StatusOK, country)
+}
+
 // type BookController struct {
 // 	controller usecase.BookUsecase
 // }
