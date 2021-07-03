@@ -30,19 +30,11 @@ func main() {
 
 		v1.GET("/country/:id", controller.PrintID)
 
-		v1.GET("/Country/:id", GetCountry)
+		v1.GET("/Country/:id", controller.GetCountry)
 
 		v1.POST("/Country/", PostCountry)
 	}
 	router.Run(":8018")
-}
-
-func GetCountry(c *gin.Context) {
-	var country Country
-	id := c.Param("id")
-	country.Code = id
-	country.Name = "japan"
-	c.JSON(http.StatusOK, country)
 }
 
 func PostCountry(c *gin.Context) {
