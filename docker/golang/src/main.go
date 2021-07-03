@@ -32,16 +32,7 @@ func main() {
 
 		v1.GET("/Country/:id", controller.GetCountry)
 
-		v1.POST("/Country/", PostCountry)
+		v1.POST("/Country/", controller.PostCountry)
 	}
 	router.Run(":8018")
-}
-
-func PostCountry(c *gin.Context) {
-	var country Country
-	if err := c.ShouldBindJSON(&country); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
-		return
-	}
-	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
 }
