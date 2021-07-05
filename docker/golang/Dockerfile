@@ -10,4 +10,6 @@ ADD /src /go/src/app
 
 RUN go get github.com/gin-gonic/gin
 
+RUN go get github.com/go-sql-driver/mysql
+
 CMD [ "go", "run", "main.go" ]
