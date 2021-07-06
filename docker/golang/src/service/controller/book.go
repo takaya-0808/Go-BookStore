@@ -1,11 +1,6 @@
 package controller
 
 import (
-	// "net/http"
-	// "bookstore/domain/model"
-	// "bookstore/usecase"
-	// "bookstore/service/mysql"
-	// "strconv"
 	"log"
 	"net/http"
 
@@ -50,10 +45,11 @@ func GetCountry(c *gin.Context) {
 
 func PostCountry(c *gin.Context) {
 	var country Country
-	if err := c.ShouldBindJSON(&country); err != nil {
+	if err := c.BindJSON(&country); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 		return
 	}
+	log.Println(country.Code)
 	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
 }
 
