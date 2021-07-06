@@ -68,7 +68,7 @@ func PostLogin(c *gin.Context) {
 			})
 		} else {
 			c.JSON(http.StatusUnauthorized, gin.H{
-				"status": "unathorized",
+				"status": "unauthorized",
 			})
 		}
 	}
