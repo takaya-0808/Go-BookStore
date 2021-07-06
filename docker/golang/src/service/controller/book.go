@@ -53,6 +53,27 @@ func PostCountry(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
 }
 
+type UserModel struct {
+	UserName string
+	PassWord string
+	Email    string
+}
+
+func PostLogin(c *gin.Context) {
+	var usermodel UserModel
+	if c.BindJSON(&usermodel) == nil {
+		if usermodel.UserName == "hoge" && usermodel.PassWord == "password" {
+			c.JSON(http.StatusOK, gin.H{
+				"status": "you are logged in",
+			})
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{
+				"status": "unathorized",
+			})
+		}
+	}
+}
+
 // type BookController struct {
 // 	controller usecase.BookUsecase
 // }
