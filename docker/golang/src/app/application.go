@@ -19,6 +19,7 @@ func InitRouting(router *gin.Engine) {
 			v1.GET("/country/:id", func(c *gin.Context) { controller.PrintID(c) })
 			v1.GET("/Country/:id", func(c *gin.Context) { controller.GetCountry(c) })
 			v1.POST("/Country/", func(c *gin.Context) { controller.PostCountry(c) })
+			v1.POST("/loginJSON/", func(c *gin.Context) { controller.PostLogin(c) })
 		}
 	}
 	router.Run(":8018")
