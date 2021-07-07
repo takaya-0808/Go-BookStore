@@ -3,6 +3,7 @@ package controller
 import (
 	"log"
 	"net/http"
+	"src/domain/model"
 
 	"github.com/gin-gonic/gin"
 )
@@ -44,7 +45,7 @@ func GetCountry(c *gin.Context) {
 }
 
 func PostCountry(c *gin.Context) {
-	var country Country
+	var country model.Country
 	if err := c.BindJSON(&country); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad Request"})
 		return
@@ -53,14 +54,8 @@ func PostCountry(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"mesaage": "ok"})
 }
 
-type UserModel struct {
-	UserName string
-	PassWord string
-	Email    string
-}
-
 func PostLogin(c *gin.Context) {
-	var usermodel UserModel
+	var usermodel model.UserModel
 	if c.BindJSON(&usermodel) == nil {
 		if usermodel.UserName == "hoge" && usermodel.PassWord == "password" {
 			c.JSON(http.StatusOK, gin.H{
