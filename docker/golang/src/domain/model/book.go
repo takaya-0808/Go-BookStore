@@ -26,6 +26,12 @@ type UpdateBook struct {
 	Author string `json:"author"`
 }
 
+type msg struct {
+	Name    string `json:"user"`
+	Message string
+	Number  int
+}
+
 type Country struct {
 	Code string
 	Name string
