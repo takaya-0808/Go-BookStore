@@ -15,11 +15,7 @@ func GetMessage(c *gin.Context) {
 }
 
 func ReadMessage(c *gin.Context) {
-	var msg struct {
-		Name    string `json:"user"`
-		Message string
-		Number  int
-	}
+	var msg model.Msg
 	msg.Name = c.Param("name")
 	msg.Message = "これは構造体をJSONで返すためのテストです。"
 	msg.Number = 1111
