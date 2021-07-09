@@ -13,7 +13,15 @@ type BookHandler struct {
 	bookUsecase usecase.BookRepository
 }
 
-func (handler *BookHandler) View(c *gin.Context) {}
+func (handler *BookHandler) View(c *gin.Context) {
+	books, err := handler.bookUsecase.FindAll()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, books)
+		return
+	}
+	c.JSON(http.StatusOK, books)
+	return
+}
 
 func (handler *BookHandler) Search(c *gin.Context) {}
 
