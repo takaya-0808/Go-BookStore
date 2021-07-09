@@ -10,7 +10,7 @@ func InitRouting(router *gin.Engine) {
 
 	// bookContoroller := controller.NewBookRepository(NewSqlHandler())
 
-	handler := controller.BookHandler
+	handler := controller.BookHandler{}
 
 	bookEngine := router.Group("/api")
 	{
