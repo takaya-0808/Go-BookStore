@@ -4,9 +4,24 @@ import (
 	"log"
 	"net/http"
 	"src/domain/model"
+	"src/usecase"
 
 	"github.com/gin-gonic/gin"
 )
+
+type BookHandler struct {
+	bookUsecase usecase.BookRepository
+}
+
+func (handler *BookHandler) View(c *gin.Context) {}
+
+func (handler *BookHandler) Search(c *gin.Context) {}
+
+func (handler *BookHandler) Create(c *gin.Context) {}
+
+func (handler *BookHandler) Update(c *gin.Context) {}
+
+func (handler *BookHandler) Delete(c *gin.Context) {}
 
 func GetMessage(c *gin.Context) {
 	name := c.Param("name")
