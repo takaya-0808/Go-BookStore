@@ -11,6 +11,12 @@ type Book struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
+type UserModel struct {
+	UserName string `json:"username"`
+	PassWord string `json:"password"`
+	Email    string `json:"email"`
+}
+
 // bookrepository
 type bookRepository interface {
 	FindAll() (book []*Book, err error)
