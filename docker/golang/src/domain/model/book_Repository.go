@@ -16,6 +16,10 @@ type UserModel struct {
 	PassWord string `json:"password"`
 	Email    string `json:"email"`
 }
+type Country struct {
+	Code string
+	Name string
+}
 
 // bookrepository
 type bookRepository interface {
