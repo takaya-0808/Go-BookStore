@@ -16,12 +16,6 @@ func InitRouting(router *gin.Engine) {
 	{
 		v1 := bookEngine.Group("/v1")
 		{
-			v1.GET("/get_message/:name", func(c *gin.Context) { controller.GetMessage(c) })
-			v1.GET("/read_message/:name", func(c *gin.Context) { controller.ReadMessage(c) })
-			v1.GET("/country/:id", func(c *gin.Context) { controller.PrintID(c) })
-			v1.GET("/Country/:id", func(c *gin.Context) { controller.GetCountry(c) })
-			v1.POST("/Country/", func(c *gin.Context) { controller.PostCountry(c) })
-			v1.POST("/loginJSON/", func(c *gin.Context) { controller.PostLogin(c) })
 			v1.GET("/Book", func(c *gin.Context) { handler.View(c) })
 			v1.GET("/Book/:id", func(c *gin.Context) { handler.Search(c) })
 			v1.POST("/Book/:id", func(c *gin.Context) { handler.Create(c) })
