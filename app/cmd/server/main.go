@@ -8,6 +8,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 
 	"Go-BookStore/app/pkg/connecter"
+	"Go-BookStore/app/pkg/controllers"
 )
 
 func main() {
@@ -21,5 +22,7 @@ func main() {
 			"hoge": "fuga",
 		})
 	})
+	r := router.Group("/api/v1")
+	controllers.SetUp(r)
 	router.Run(":8019")
 }
